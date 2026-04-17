@@ -6,8 +6,8 @@ goals = [
         name="Gather Article Information",
         description=(
             "Fetch the provided sports article, extract its readable content, "
-            "and analyze it in order to understand Newell's current situation "
-            "ahead of the next match."
+            "and analyze it in order to understand of Newell's next rival "
+            "(key aspects like their tactics,strengths and weaknesses)."
         )
     ),
     Goal(

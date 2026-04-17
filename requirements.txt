@@ -2,3 +2,5 @@ requests
 beautifulsoup4
 litellm
 openai
+sofascore-wrapper
+curl_cffi

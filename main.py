@@ -5,7 +5,8 @@ os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 from framework.game_framework import tools  # o como se llame
 
 
-ARTICLE_URL = "https://elciudadanoweb.com/con-acassuso-en-la-mira-newells-trabaja-con-todos-sus-canones-apuntando-al-partido-de-copa-argentina/"
+ARTICLE_URL = "https://www.sofascore.com/es-la/football/team/acassuso/112491#tab:statistics"
+##"https://elciudadanoweb.com/con-acassuso-en-la-mira-newells-trabaja-con-todos-sus-canones-apuntando-al-partido-de-copa-argentina/"
 
 ##"https://www.rosario3.com/deportes/en-newells-casi-todo-vuelve-a-estar-bajo-la-lupa-por-un-arranque-a-los-tumbos-20260209-0039.html"
 
