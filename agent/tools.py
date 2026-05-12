@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from framework.game_framework import register_tool
 from litellm import completion
+from curl_cffi import requests as cffi_requests
 
 
 @register_tool(tags=["news"])
@@ -38,15 +39,15 @@ def fetch_article(url: str) -> str:
 @register_tool(tags=["analysis"])
 def summarize_match_outlook(text: str) -> str:
     """
-    Produces a structured analysis of Newell's upcoming match
-    based on the provided article text.
+    Produces a structured analysis of Newell's upcoming match (focused on the opponent)
+    based on the statistics of the opponent and the provided article text.
     """
 
     prompt = f"""
 You are a professional football analyst.
 
 Based on the following article, produce a structured pre-match analysis
-focused on Newell's Old Boys' upcoming match.
+focused on the opponent of Newell's Old Boys' upcoming match.
 
 Structure your answer as:
 
@@ -76,3 +77,40 @@ def terminate(message: str) -> str:
     Terminates the agent execution with a final analysis.
     """
     return message
+
+
+@register_tool(tags=["stats"])
+def fetch_sofascore_stats(team_id: str, tournament_id: str = "155", season_id: str = "87913") -> str:
+    """
+    Fetches team statistics from Sofascore for the Liga Profesional Argentina.
+    Use this to get attacking, defensive and passing stats for the opponent.
+    Common team IDs: Central Cordoba=5365, Newells=3211, Union Santa Fe=3204, Velez = 3208, Instituto Cordoba=4937.
+    """
+    url = f"https://api.sofascore.com/api/v1/team/{team_id}/unique-tournament/{tournament_id}/season/{season_id}/statistics/overall"
+    
+    response = cffi_requests.get(
+        url,
+        impersonate="chrome120",
+        headers={"referer": "https://www.sofascore.com/"}
+    )
+    
+    if response.status_code == 200:
+        stats = response.json().get("statistics", {})
+        # Devolver solo las métricas más relevantes para no inflar el contexto
+        key_stats = {
+            "goalsScored": stats.get("goalsScored"),
+            "goalsConceded": stats.get("goalsConceded"),
+            "shotsPerGame": stats.get("shotsPerGame"),
+            "bigChancesCreated": stats.get("bigChancesCreated"),
+            "bigChancesMissed": stats.get("bigChancesMissed"),
+            "ballPossession": stats.get("ballPossession"),
+            "accuratePassesPercentage": stats.get("accuratePassesPercentage"),
+            "cleanSheets": stats.get("cleanSheets"),
+            "interceptionsPerGame": stats.get("interceptionsPerGame"),
+            "tacklesPerGame": stats.get("tacklesPerGame"),
+            "duelsWonPercentage": stats.get("duelsWonPercentage"),
+            "errorLeadToGoal": stats.get("errorLeadToGoal"),
+        }
+        return json.dumps(key_stats, ensure_ascii=False)
+    else:
+        return f"Error {response.status_code}: {response.text[:200]}"

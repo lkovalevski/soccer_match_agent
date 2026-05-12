@@ -1,6 +1,6 @@
 # ⚽ Football Agent — Newell's Match Analyzer
 
-An AI agent that fetches sports news articles and produces structured pre-match analyses for Newell's Old Boys, built using the **GAME framework** (Goal – Actions – Memory – Environment).
+An AI agent that fetches sports news articles, retrieves live statistics from Sofascore, and produces structured pre-match analyses for Newell's Old Boys, built using the **GAME framework** (Goal – Actions – Memory – Environment).
 
 ---
 
@@ -11,9 +11,9 @@ This project applies the GAME design pattern for AI agents:
 | Component | Description |
 |-----------|-------------|
 | **Goal** | What the agent wants to achieve — analyze an article and produce a pre-match report |
-| **Actions** | The tools available to the agent — fetch, extract, summarize, terminate |
+| **Actions** | The tools available to the agent — fetch article, fetch stats, summarize, terminate |
 | **Memory** | A record of what the agent has done during its execution loop |
-| **Environment** | The context the agent operates in — web articles, LLM responses |
+| **Environment** | The context the agent operates in — web articles, Sofascore API, LLM responses |
 
 ---
 
@@ -46,10 +46,10 @@ main.py
   └── creates agent (agent_setup.py)
         └── with goals (goals.py)
         └── with tools (tools.py)
-              ├── fetch_article(url)         → fetches raw HTML
-              ├── extract_main_text(html)    → cleans and extracts readable text
-              ├── summarize_match_outlook(text) → GPT-4o structured analysis
-              └── terminate(message)         → ends execution, returns final report
+              ├── fetch_sofascore_stats(team_id)  → live season statistics
+              ├── fetch_article(url)              → fetches and cleans article text
+              ├── summarize_match_outlook(text)   → GPT-4o structured analysis
+              └── terminate(message)              → ends execution, returns final report
 ```
 
 The agent runs in a loop, selecting tools based on its goals, until it calls `terminate`.
@@ -129,6 +129,17 @@ FINAL REPORT
    A tight, low-scoring game with Newell's looking to avoid defeat...
 ```
 
+## 📸 Sample Output
+
+![Agent Report1](assets/sample_report_1.jpg)
+![Agent Report2](assets/sample_report_2.jpg)
+
+## 🐦 Twitter Posts
+
+![Gimnasia Preview](assets/twitter_post_1.jpg)
+![Velez Preview](assets/twitter_post_7.jpg)
+
+
 ---
 
 ## 🔧 Configuration
@@ -145,8 +156,9 @@ DEFAULT_ARTICLE_URL = "https://..."
 
 ## 🚀 Roadmap
 
-- [x] Single source article analysis (rosario3)
-- [ ] Multiple source aggregation
+- [x] Single source article analysis
+- [x] Sofascore live statistics integration
+- [ ] Multiple article source aggregation
 - [ ] Twitter/X analyst sentiment scraping
 - [ ] Historical match metrics integration
 - [ ] Probabilistic win/draw/loss prediction
@@ -159,8 +171,18 @@ DEFAULT_ARTICLE_URL = "https://..."
 - GAME framework for agent design
 - Tool registration and function calling
 - Web scraping with `requests` + `BeautifulSoup`
+- Unofficial API access with `curl_cffi` (browser fingerprint impersonation)
 - LLM integration via `litellm`
 - Agent memory and execution loop
+
+---
+
+## ⚠️ Disclaimer
+
+The Sofascore integration uses an unofficial API endpoint obtained through
+reverse engineering of the public website. This project is for educational
+and non-commercial purposes only. Use responsibly and respect Sofascore's
+terms of service.
 
 ---
 
