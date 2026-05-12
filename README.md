@@ -131,7 +131,7 @@ FINAL REPORT
 
 ## 📸 Sample Output
 
-![AgentReport1](assets/sample_report_1.jpg)
+![AgentReport1](assets/sample_report_1.png)
 
 ![AgentReport2](assets/sample_report_2.jpg)
 
@@ -140,7 +140,7 @@ FINAL REPORT
 
 ![GimnasiaPreview](assets/twitter_post_1.jpg)
 
-![VelezPreview](assets/twitter_post_7.jpg)
+![VelezPreview](assets/twitter_post_7.png)
 
 
 ---
