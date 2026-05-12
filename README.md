@@ -133,12 +133,12 @@ FINAL REPORT
 
 ![AgentReport1](assets/sample_report_1.png)
 
-![AgentReport2](assets/sample_report_2.jpg)
+![AgentReport2](assets/sample_report_2.png)
 
 
 ## 🐦 Twitter Posts
 
-![GimnasiaPreview](assets/twitter_post_1.jpg)
+![GimnasiaPreview](assets/twitter_post_1.png)
 
 ![VelezPreview](assets/twitter_post_7.png)
 
