@@ -131,13 +131,16 @@ FINAL REPORT
 
 ## 📸 Sample Output
 
-![Agent Report1](https://raw.githubusercontent.com/lkovalevski/soccer_match_agent/main/assets/sample_report_1.jpg)
-![Agent Report2](https://raw.githubusercontent.com/lkovalevski/soccer_match_agent/main/assets/sample_report_2.jpg)
+![AgentReport1](assets/sample_report_1.jpg)
+
+![AgentReport2](assets/sample_report_2.jpg)
+
 
 ## 🐦 Twitter Posts
 
-![Gimnasia Preview](https://raw.githubusercontent.com/lkovalevski/soccer_match_agent/main/assets/twitter_post_1.jpg)
-![Velez Preview](https://raw.githubusercontent.com/lkovalevski/soccer_match_agent/main/assets/twitter_post_7.jpg)
+![GimnasiaPreview](assets/twitter_post_1.jpg)
+
+![VelezPreview](assets/twitter_post_7.jpg)
 
 
 ---
